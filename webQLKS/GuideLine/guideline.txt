@@ -1,0 +1,43 @@
+I.Phân tích dự án
+- Prontend:
+	- Trang chủ
+	- Trang danh sách phòng
+	- Trang chi tiết phòng
+	- Trang chi tiết sản phẩm
+	- Trang hóa đơn thanh toán
+	- Trang thanh toán hoàn thành
+	- Trang liên hệ
+- Admin:
+	- Tài khoản người dùng:
+		Quản lý role(admin,user)
+		Quản lý người dùng: admin/user
+			Hiển thị danh sách/thêm/xóa/sửa
+		Đăng kí tài khoản
+		Chức năng đăng nhập
+	- Quản lý danh mục phòng
+	- Quản lý phòng
+	- Quản lý sản phẩm
+	- Quản lý hóa đơn
+	- Phản hồi
+
+
+- logout.php
+	- hủy cookie
+	- hủy session 
+	- xóa khỏi bảng tokens
+
+- khi login thành công:
+	- gennerate token (duy nhất: cho tài khoản + tại thời điểm login)
+	- gán token xuống cookie: vì người dùng truy cập thực hiện truy cập bất kì trang web của hệ thống thì hệ thống sẽ get cookie này ra
+	và check xem cookie của người dùng nào -> validate auto login
+	- lưu token vào một cơ sở dư liệu để quản lý
+	- kết hợp sử dụng session -> hệ thống tối ưu hơn về login.
+	- validate login tự động trên hệ thống
+
+
+create table tokens{
+	user_id int references user (id),
+	token varchar(32) not null,
+	created_at datetime,
+	primary key (user_id,token) 
+}

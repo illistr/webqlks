@@ -1,0 +1,65 @@
+Phân tích thiết kế Database
+1. Bảng Role
+	- id: int -> Khóa chính tự tăng
+	- name: string(varchar) - 20 kí tự
+2. Bảng User
+	- id: int -> Khóa chính tự tăng
+	- fullname -> string-> 50 kí tự
+	- email -> string -> 150 kí tự
+	- phone_number -> string -> 20 kí tự
+	- address -> string ->200 kí tự
+	- password -> string ->md5 -> 32 kí tự -> chính xác
+	- role_id -> int ->foreign key -> role(id)
+	- created_at: datetime -> tạo bản ghi
+	- update_at: datetime -> sửa bản ghi 
+3. Bảng danh mục -> Category
+	- id: int -> Khóa tự tăng
+	- name: string -> 100 kí tự
+4. Bảng phòng -> Room
+	- id: int -> Khóa tự tăng
+	- category_id ->int -> foreign key -> category(id)
+	- title: string -> 350 kí tự
+	- price: int
+	- discount: int
+	- thumbnail: string -> 500 kí tự
+	- description: longtext
+	- created_at: datetime -> tạo bản ghi
+	- update_at: datetime -> sửa bản ghi 
+5. Bảng quản lý galery: quản lý hình ảnh của phòng
+	- id: int -> Khóa tự tăng
+	- Room_id -> int -> foreign key -> Room(id)
+	- thumbnail -> string -> 500 kí tự
+6. Bảng quản lý phản hồi: feedback
+	- id: int -> Khóa tự tăng
+	- firstname -> string -> 30 kí tự
+	- lastname -> string -> 30 kí tự
+	- email -> string -> 150 kí tự
+	- phone_number -> string -> 20 kí tự
+	- subject_name -> string -> 200 kí tự ; tiêu đề
+	- note -> string(varchar) -> 500 kí tự
+7. Quản lý đơn hàng
+	- fullname:
+	- email
+	- phone_number
+	- address
+	- note
+	- order_date: datetime -> thời điểm đặt hàng
+	Danh sách sản phẩm:
+		- sản phẩm 1 x số lượng x giá thời điểm mua	
+	7.1. Bảng order
+	 	- id: int tự tăng
+	 	- fullname
+	 	- email 
+	 	- phone_number
+	 	- address
+	 	- note
+	 	- order_date: datetime -> thời điểm đặt hàng
+	 	- status: int -> (pending, approved,...)
+	 	- total_money -> lưu tổng tiền 
+	 7.2. Bảng chi tiết đơn hàng
+	 	-  id: int tự tăng
+	 	- order_id ->int -> foreign key -> order(id)
+	 	- product_id -> int ->foreign key -> product(id)
+	 	- price ->int 
+	 	- num -> int -> số lượng sản phẩm
+	 	- total_money -> lưu tổng tiền 
